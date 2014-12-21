@@ -1,0 +1,25 @@
+The player method is the game method
+
+while game!=finished
+
+player = x
+
+Ask player to put in x where he wants
+
+print the board
+
+Take the player choice
+
+run through the $board array and change accordingly
+
+print new board
+
+if winning condition is met
+finish game
+else if player equal to X change to O
+start again
+
+end
+end
+
+winning conditions are [A1,B1,C1], [A1,B2,C3],[B1,B2,B3],[C1,C2,C3],[C1,B2,A3], [A1,B2,C1], [A2,B2,C2],[A3,B3,C3]
