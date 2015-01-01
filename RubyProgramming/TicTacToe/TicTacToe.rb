@@ -1,4 +1,3 @@
-
 class TicTacToe
 	@@game_id = 0
 	def initialize()
@@ -30,32 +29,89 @@ class TicTacToe
 
 	def player()
 
-		puts "Player X, please pick where you want to mark X"
+		finished = true
+		
+		player = 'x'
+		game = false
+		turn = 1
 
-		print "> "
+		while game != finished
 
-		choice = gets.chomp #player choice
-		choice = choice.to_s.upcase #converting it to upper case
-		puts "You picked #{choice}"
+			turn += 1
+			puts turn
 
+			puts "Player #{player}, please pick where you want to mark #{player}"
 
-		i = -1 #this is for changing the values of the array. 
-		$board.each do |position| #loop through the array
-			i += 1 #changing the value of i with each loop
-			if position == choice #if the position is the same as the choice
-				puts "You picked #{$board[i]}" 
-				$board[i] = 'X' #change value of position
-				puts $board[i] #print the new value
-				
+			print "> "
+
+			choice = gets.chomp #player choice
+			choice = choice.to_s.upcase #converting it to upper case
+			puts "You picked #{choice}"
+
+			i = -1 #this is for changing the values of the array. 
+			$board.each do |position| #loop through the array
+				i += 1 #changing the value of i with each loop
+				if position == choice #if the position is the same as the choice
+
+					$board[i] = "#{player}" #change value of position
+					puts $board[i] #print the new value
+				#else
+					#puts "please pick a proper value" #putting in condition to make sure user picks a correct value
+					#turn -= 1
+				end
 			end
-		end
-		$printedBoard = "\n\t#{$board[0]}  |  #{$board[3]} |  #{$board[6]} 
+				$printedBoard = "\n\t#{$board[0]}  |  #{$board[3]} |  #{$board[6]} 
 	           \n    ---------------------
 	            \n\t#{$board[1]}  |  #{$board[4]} |  #{$board[7]}
 	            \n    --------------------- 
 	            \n\t#{$board[2]}  |  #{$board[5]} |  #{$board[8]}
 	             \n" 
-		puts $printedBoard   
+
+				puts $printedBoard  
+
+			if $board[0] == 'x' &&  $board[3] == 'x' && $board[6] == 'x' || $board[0] == 'y' && $board[3] == 'y' && $board[6] == 'y'
+				game = finished
+				puts "I am the first condition"
+				puts "We have a winner"
+			elsif $board[1] == 'x'  && $board[4] == 'x'  && $board[7] == 'x' || $board[1] == 'y' && $board[4] == 'y' && $board[7] == 'y'
+				game = finished
+				puts "I am the second condition"
+				puts "We have a winner"
+			elsif $board[2] == 'x'  && $board[5] == 'x'  && $board[8] == 'x' || $board[2] == 'y' && $board[5] == 'y' && $board[8] == 'y'
+				game = finished
+				puts "I am the third condition"
+				puts "We have a winner"
+			elsif $board[0] == 'x'  && $board[1] == 'x'  && $board[2] == 'x' || $board[0] == 'y' && $board[1] == 'y' && $board[2] == 'y'
+				game = finished
+				puts "I am the 4th condition"
+				puts "We have a winner"
+			elsif $board[3] == 'x'  && $board[4] == 'x'  && $board[5] == 'x' || $board[3] == 'y' && $board[4] == 'y' && $board[5] == 'y'
+				game = finished
+				puts "I am the 5th condition"
+				puts "We have a winner"
+			elsif $board[6] == 'x'  && $board[7] == 'x'  && $board[8] == 'x' || $board[6] == 'y' && $board[7] == 'y' && $board[8]  == 'y'
+				game = finished
+				puts "I am the 6th condition"
+				puts "We have a winner"
+			elsif $board[0] == 'x'  && $board[4] == 'x'  && $board[8] == 'x'  || $board[0] == 'y' && $board[4] == 'y' && $board[8]  == 'y'
+				game = finished
+				puts "I am the 7th condition"
+				puts "We have a winner"
+			elsif $board[2] == 'x' && $board[4] == 'x' && $board[6] == 'x' || $board[2] == 'y' && $board[4] == 'y' && $board[6]  == 'y'
+				game = finished
+				puts "I am the 8th condition"
+				puts "We have a winner"
+			elsif turn % 2 == 0
+				player = 'y'
+			elsif turn % 2 != 0
+				player = 'x'
+			
+			end
+			if turn >= 9
+				puts "game is a draw"
+				game = finished
+			end
+		end
 	end
 end
 
