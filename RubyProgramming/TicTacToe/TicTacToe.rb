@@ -55,9 +55,6 @@ class TicTacToe
 
 					$board[i] = "#{player}" #change value of position
 					puts $board[i] #print the new value
-				#else
-					#puts "please pick a proper value" #putting in condition to make sure user picks a correct value
-					#turn -= 1
 				end
 			end
 				$printedBoard = "\n\t#{$board[0]}  |  #{$board[3]} |  #{$board[6]} 
