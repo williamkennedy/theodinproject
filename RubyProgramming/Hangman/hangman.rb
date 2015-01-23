@@ -35,6 +35,9 @@ class Hangman
 	return @@randomWord
 	puts @@randomWord
 	end	
+
+
+
 	def playGame(randomWord)
 		puts "This is the word #{randomWord}"
 		randomWord.downcase!
@@ -50,24 +53,35 @@ class Hangman
 		puts "This is the player board to guess on"
 		puts playerBoard.inspect
 
+		wrongGuess = 0
+
+		while wrongGuess <= 12
 		puts "Please guess a letter"
 		print "> "
 		choice = STDIN.gets.chomp#not using gets.chomp because that returns the first line in the file
-		wrongGuess = 0
+			
+		
 
 
-		i = 0
-		guessWord.map! { |letter| 
-			i += 1
-			if(letter == choice)
-				playerBoard[i] = choice
-				puts "you got a letter correct"
-			else 
-				wrongGuess += 1
+			i = 0
+			guessWord.map! { |letter| 
+				if(letter == choice)
+					playerBoard[i] = choice
+					puts "you got a letter correct"
 				
-			end
+				elsif guessWord.include?(choice)
+					
+					wrongGuess += 1
+					puts "You put a wrong move #{wrongGuess}"
+					break
+				
+				end
+				i += 1
 
-			}
+				}
+				puts playerBoard.inspect
+
+			end
 
 
 		
